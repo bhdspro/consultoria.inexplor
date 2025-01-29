@@ -1,1 +1,151 @@
-
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultoria Inexplor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #F04E23; /* Cor vibrante */
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        h1 {
+            margin-bottom: 40px;
+            font-size: 36px;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+        .container {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+        .card {
+            position: relative;
+            width: 220px;
+            height: 220px;
+            background: rgba(255, 255, 255, 0.15); /* Cor suave de fundo */
+            border-radius: 16px;
+            border: 2px solid #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-10px); /* Efeito de leve elevação */
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1); /* Sombra suave */
+        }
+        .card .number {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 30px;
+            height: 30px;
+            background: white;
+            color: #F04E23;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center; /* Garante que o texto seja centralizado */
+        }
+        p {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .btn {
+            margin-top: 10px;
+            padding: 12px 20px;
+            background: #28a745; /* Verde mais moderno */
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .btn:hover {
+            background: #218838; /* Cor verde mais escura ao passar o mouse */
+        }
+        .arrow-container {
+            margin-top: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .arrow {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: #F04E23;
+            cursor: pointer;
+            animation: bounce 1.5s infinite;
+            transition: transform 0.3s ease;
+        }
+        .arrow:hover {
+            transform: scale(1.1); /* Leve aumento ao passar o mouse */
+        }
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(10px);
+            }
+        }
+    </style>
+    <script>
+        function redirectTo(url) {
+            window.location.href = url;
+        }
+    </script>
+</head>
+<body>
+    <h1>🤯 PRODUTOS OCULTOS DA SEMANA</h1>
+    <div class="container">
+        <div class="card">
+            <div class="number">#1</div>
+            <p>CURSO COMPLETO DE ECG</p>
+            <button class="btn" onclick="redirectTo('https://comunidade.inexplor.com/produto-oculto/67018')">Acessar Produto</button>
+        </div>
+        <div class="card">
+            <div class="number">#2</div>
+            <p>BEBÊ COME COME</p>
+            <button class="btn" onclick="redirectTo('https://comunidade.inexplor.com/produto-oculto/16035')">Acessar Produto</button>
+        </div>
+        <div class="card">
+            <div class="number">#3</div>
+            <p>CURSO EXCEL SEM SEGREDO</p>
+            <button class="btn" onclick="redirectTo('https://comunidade.inexplor.com/produto-oculto/96188')">Acessar Produto</button>
+        </div>
+    </div>
+    <div class="arrow-container">
+        <div class="arrow" onclick="redirectTo('https://xproc.inexplor.com')">&#8595;</div>
+    </div>
+</body>
+</html>
