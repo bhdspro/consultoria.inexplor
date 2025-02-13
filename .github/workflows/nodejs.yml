@@ -19,7 +19,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '16'  # Ajuste para a versão do Node.js que você precisa
 
       - name: Install dependencies
         run: |
@@ -27,5 +27,4 @@ jobs:
           npx playwright install  # Instala o Playwright e o Chromium necessário
 
       - name: Run the script
-        run: |
-          node index.js  # Executa seu script Node.js (substitua pelo seu script)
+        run: node index.js  # Substitua por seu script principal
