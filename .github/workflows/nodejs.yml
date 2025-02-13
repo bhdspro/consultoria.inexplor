@@ -1,0 +1,31 @@
+name: Node.js Script with Playwright
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: |
+          npm install
+          npx playwright install  # Instala o Playwright e o Chromium necessário
+
+      - name: Run the script
+        run: |
+          node index.js  # Executa seu script Node.js (substitua pelo seu script)
