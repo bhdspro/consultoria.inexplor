@@ -1,4 +1,4 @@
-name: Node.js Script with Playwright
+name: Run Node.js Script with Playwright
 
 on:
   push:
@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3  # Faz checkout do código
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -23,8 +23,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm install
-          npx playwright install  # Instala o Playwright e o Chromium necessário
+          npm install  # Instala as dependências do seu projeto
+          npx playwright install  # Instala o Playwright e o navegador necessário
 
       - name: Run the script
-        run: node index.js  # Substitua por seu script principal
+        run: node index.js  # Executa o seu script Node.js (substitua pelo seu script)
