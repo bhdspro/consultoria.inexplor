@@ -4,148 +4,198 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consultoria Inexplor</title>
+    
+    <link rel="icon" type="image/png" href="https://inexplor.com/cecbf4703a2aa92ab378c064f0550d14.png">
+    
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* Fonte importada do Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+        
+        /* Estilo do corpo da página */
         body {
+            background-color: #f04e23; /* Cor de fundo vermelha */
+            font-family: 'Roboto', sans-serif;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             height: 100vh;
-            background-color: #F04E23; /* Cor vibrante */
-            color: white;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        h1 {
-            margin-bottom: 40px;
-            font-size: 36px;
-            font-weight: 600;
-            letter-spacing: 2px;
-        }
-        .container {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 20px;
-            justify-content: center;
-        }
-        .card {
+            margin: 0;
+            color: white; /* Texto em branco */
+            overflow: hidden;
             position: relative;
-            width: 220px;
-            height: 220px;
-            background: rgba(255, 255, 255, 0.15); /* Cor suave de fundo */
-            border-radius: 16px;
-            border: 2px solid #fff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .card:hover {
-            transform: translateY(-10px); /* Efeito de leve elevação */
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1); /* Sombra suave */
-        }
-        .card .number {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            width: 30px;
-            height: 30px;
-            background: white;
-            color: #F04E23;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            font-weight: 600;
-            text-align: center; /* Garante que o texto seja centralizado */
-        }
-        p {
-            font-size: 16px;
-            font-weight: 500;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .btn {
-            margin-top: 10px;
-            padding: 12px 20px;
-            background: #28a745; /* Verde mais moderno */
+
+        /* Estilo do título principal */
+        h1 {
             color: white;
-            border: none;
-            border-radius: 30px;
-            font-size: 14px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-        .btn:hover {
-            background: #218838; /* Cor verde mais escura ao passar o mouse */
-        }
-        .arrow-container {
-            margin-top: 40px;
+            text-shadow: 1px 1px 0 #464b52, -1px -1px 0 #464b52, 1px -1px 0 #464b52, -1px 1px 0 #464b52; /* Sombra */
+            margin-bottom: 10px;
+            margin-top: 0;
             display: flex;
             align-items: center;
-            justify-content: center;
         }
-        .arrow {
-            width: 50px;
-            height: 50px;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            color: #F04E23;
-            cursor: pointer;
-            animation: bounce 1.5s infinite;
-            transition: transform 0.3s ease;
+
+        /* Efeito de digitação */
+        .typing {
+            border-right: 2px solid #191c1f;
+            white-space: nowrap;
+            overflow: hidden;
+            display: inline-block;
+            animation: blink-caret 0.75s step-end infinite; /* Animação de piscar */
+            margin: 0 5px;
         }
-        .arrow:hover {
-            transform: scale(1.1); /* Leve aumento ao passar o mouse */
-        }
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
+
+        /* Animação de piscar */
+        @keyframes blink-caret {
             50% {
-                transform: translateY(10px);
+                border-color: transparent;
             }
+        }
+
+        /* Container do input e botão */
+        .input-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        /* Estilo do campo de input */
+        input {
+            border: 2px solid #191c1f;
+            border-radius: 25px;
+            padding: 10px;
+            font-size: 16px;
+            width: 70%;
+            max-width: 500px;
+            margin-right: 10px;
+        }
+
+        /* Estilo do botão */
+        button {
+            background-color: white;
+            border: 2px solid #191c1f;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        /* Mudança de cor ao passar o mouse sobre o botão */
+        button:hover {
+            background-color: #32cd32;
+            color: white;
+        }
+
+        /* Mensagem de erro */
+        .error-message {
+            color: white;
+            margin-top: 10px;
+            font-weight: bold;
+            display: none; /* Oculta inicialmente */
+        }
+
+        /* Container para botões personalizados */
+        .button-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 40px;
+        }
+
+        /* Botões personalizados para ações adicionais */
+        .custom-button {
+            background-color: #f04e23;
+            border: 2px solid white;
+            border-radius: 25px;
+            padding: 10px 20px;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        /* Mudança de cor ao passar o mouse sobre o botão personalizado */
+        .custom-button:hover {
+            background-color: #32cd32;
+        }
+
+        /* Estilo e posição do logotipo */
+        #dvd-logo {
+            position: absolute;
+            width: 100px;
+            height: auto;
+            pointer-events: none; /* Desativa interações com o mouse */
         }
     </style>
-    <script>
-        function redirectTo(url) {
-            window.location.href = url;
-        }
-    </script>
 </head>
 <body>
-    <h1>🤯 PRODUTOS OCULTOS DA SEMANA</h1>
-    <div class="container">
-        <div class="card">
-            <div class="number">#1</div>
-            <p>CURSO COMPLETO DE ECG</p>
-            <button class="btn" onclick="redirectTo('https://comunidade.inexplor.com/produto-oculto/67018')">Acessar Produto</button>
-        </div>
-        <div class="card">
-            <div class="number">#2</div>
-            <p>BEBÊ COME COME</p>
-            <button class="btn" onclick="redirectTo('https://comunidade.inexplor.com/produto-oculto/16035')">Acessar Produto</button>
-        </div>
-        <div class="card">
-            <div class="number">#3</div>
-            <p>CURSO EXCEL SEM SEGREDO</p>
-            <button class="btn" onclick="redirectTo('https://comunidade.inexplor.com/produto-oculto/96188')">Acessar Produto</button>
-        </div>
+    <h1> Afilie-se ao <span id="typing-text" class="typing"></span> oculto da Hotmart</h1>
+    
+    <div class="input-container">
+        <input type="text" id="hotmart-link" placeholder=" Cole o link da página de pagamento da Hotmart que você copiou" />
+        <button onclick="checkLink()">
+            <span style="font-size: 24px;">➔</span>
+        </button>
     </div>
-    <div class="arrow-container">
-        <div class="arrow" onclick="redirectTo('https://xproc.inexplor.com')">&#8595;</div>
+    
+    <div class="error-message" id="error-message"> Ops! O link correto deve começar com https://pay.hotmart.com/...</div>
+
+    <div class="button-container">
+        <a href="https://pay.inexplor.com/super-comunidade" target="_blank" class="custom-button"> Quero Produto Validado</a>
+        <a href="https://ajuda.inexplor.com/xproc/preciso-ajuda" target="_blank" class="custom-button"> Preciso de Ajuda</a>
     </div>
-</body>
-</html>
+
+    <img src="https://i.ibb.co/K9Gknzm/Logo-Inexplor.png" id="dvd-logo">
+    
+    <script>
+        /* Texto para o efeito de digitação */
+        const words = ["Hotmart", "Kirvano", "Eduzz", "Braip", "Logzz", "Digistore24"];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let currentWord = "";
+        let isDeleting = false;
+        const typingElement = document.getElementById("typing-text");
+        const dvdLogo = document.getElementById("dvd-logo");
+
+        /* Função de digitação e apagamento do texto */
+        function type() {
+            currentWord = words[wordIndex];
+            if (isDeleting) {
+                typingElement.innerText = currentWord.substring(0, charIndex--);
+                if (charIndex < 0) {
+                    isDeleting = false;
+                    wordIndex = (wordIndex + 1) % words.length;
+                }
+            } else {
+                typingElement.innerText = currentWord.substring(0, charIndex++);
+                if (charIndex > currentWord.length) {
+                    isDeleting = true;
+                }
+            }
+            setTimeout(type, isDeleting ? 150 : 300);
+        }
+
+        /* Inicialização ao carregar a página */
+        document.addEventListener("DOMContentLoaded", () => {
+            setTimeout(type, 500);
+            animateDVDLogo();
+
+            document.getElementById('hotmart-link').addEventListener('focus', () => {
+                document.getElementById('error-message').style.display = 'none';
+            });
+        });
+
+        /* Verificação do link e redirecionamento para o WhatsApp */
+        function checkLink() {
+            const input = document.getElementById('hotmart-link').value;
+            const errorMessage = document.getElementById('error-message');
+            const hotmartLinkPattern = /^https:\/\/(pay|payment)\.hotmart\.com\/(\w+)/;
+            
+            if (hot
