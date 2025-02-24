@@ -29,11 +29,15 @@
     text-shadow: 1px 1px 0 #464b52, -1px -1px 0 #464b52, 1px -1px 0 #464b52, -1px 1px 0 #464b52;
     margin-bottom: 10px;
     margin-top: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Alinha os textos ao centro */
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
 }
+
+.typing {
+    display: inline-block;
+}
+
 
 
         .typing {
@@ -133,11 +137,9 @@
     </style>
 </head>
 <body>
-    <h1>
-    🔥 Afilie-se a produtos
-    <br>
-    ocultos da <span id="typing-text" class="typing"></span>
-    </h1>
+    <h1>🔥 Afilie-se a produtos</h1>
+    <h1>ocultos da <span id="typing-text" class="typing"></span></h1>
+
 
     
     <div class="input-container">
