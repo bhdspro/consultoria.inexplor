@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <!-- Configuração do documento e importação de estilos e fontes -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consultoria Inexplor</title>
     
+    <!-- Ícone da aba do navegador -->
     <link rel="icon" type="image/png" href="https://inexplor.com/cecbf4703a2aa92ab378c064f0550d14.png">
     
+    <!-- Estilos internos para aparência e layout da página -->
     <style>
         /* Fonte importada do Google Fonts */
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
@@ -34,6 +37,7 @@
             margin-top: 0;
             display: flex;
             align-items: center;
+            justify-content: center; /* Garante alinhamento do texto */
         }
 
         /* Efeito de digitação */
@@ -44,6 +48,9 @@
             display: inline-block;
             animation: blink-caret 0.75s step-end infinite; /* Animação de piscar */
             margin: 0 5px;
+            vertical-align: middle; /* Alinha o texto ao centro */
+            position: relative; /* Ajuste a posição relativa */
+            top: 2px; /* Ajuste fino para o alinhamento */
         }
 
         /* Animação de piscar */
@@ -128,30 +135,37 @@
 
         /* Estilo e posição do logotipo */
         #dvd-logo {
-            position: absolute;
+            position: fixed; /* Mudei para fixed para não ser afetado pelo movimento do corpo */
             width: 100px;
             height: auto;
             pointer-events: none; /* Desativa interações com o mouse */
+            top: 10px;
+            left: 10px;
         }
     </style>
 </head>
 <body>
-    <h1> Afilie-se ao <span id="typing-text" class="typing"></span> oculto da Hotmart</h1>
+    <!-- Título com efeito de digitação -->
+    <h1>🔥 Afilie-se a produtos ocultos da <span id="typing-text" class="typing"></span></h1>
     
+    <!-- Campo de input e botão de verificação -->
     <div class="input-container">
-        <input type="text" id="hotmart-link" placeholder=" Cole o link da página de pagamento da Hotmart que você copiou" />
+        <input type="text" id="hotmart-link" placeholder="🌐 Cole o link da página de pagamento da Hotmart que você copiou" />
         <button onclick="checkLink()">
             <span style="font-size: 24px;">➔</span>
         </button>
     </div>
     
-    <div class="error-message" id="error-message"> Ops! O link correto deve começar com https://pay.hotmart.com/...</div>
+    <!-- Mensagem de erro, inicialmente oculta -->
+    <div class="error-message" id="error-message">🚨 Ops! O link correto deve começar com https://pay.hotmart.com/...</div>
 
+    <!-- Container para botões adicionais -->
     <div class="button-container">
-        <a href="https://pay.inexplor.com/super-comunidade" target="_blank" class="custom-button"> Quero Produto Validado</a>
-        <a href="https://ajuda.inexplor.com/xproc/preciso-ajuda" target="_blank" class="custom-button"> Preciso de Ajuda</a>
+        <a href="https://pay.inexplor.com/super-comunidade" target="_blank" class="custom-button">🤑 Quero Produto Validado</a>
+        <a href="https://ajuda.inexplor.com/xproc/preciso-ajuda" target="_blank" class="custom-button">😞 Preciso de Ajuda</a>
     </div>
 
+    <!-- Logotipo que se move na tela -->
     <img src="https://i.ibb.co/K9Gknzm/Logo-Inexplor.png" id="dvd-logo">
     
     <script>
@@ -198,4 +212,47 @@
             const errorMessage = document.getElementById('error-message');
             const hotmartLinkPattern = /^https:\/\/(pay|payment)\.hotmart\.com\/(\w+)/;
             
-            if (hot
+            if (hotmartLinkPattern.test(input)) {
+                const productCode = input.match(hotmartLinkPattern)[2];
+                const whatsappNumber = '5543991228540';
+                const whatsappMessage = `Consulte o Produto Oculto: ${productCode}`;
+                const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(whatsappMessage)}`;
+                
+                window.open(whatsappUrl, '_blank');
+            } else {
+                errorMessage.style.display = 'block';
+            }
+        }
+
+        /* Animação de movimento do logotipo na tela */
+        function animateDVDLogo() {
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
+            const logoWidth = dvdLogo.clientWidth;
+            const logoHeight = dvdLogo.clientHeight;
+            let x = 0;
+            let y = 0;
+            let dx = 1;
+            let dy = 1;
+
+            function moveLogo() {
+                x += dx;
+                y += dy;
+                dvdLogo.style.left = x + "px";
+                dvdLogo.style.top = y + "px";
+
+                if (x + logoWidth >= screenWidth || x <= 0) {
+                    dx = -dx;
+                }
+                if (y + logoHeight >= screenHeight || y <= 0) {
+                    dy = -dy;
+                }
+
+                requestAnimationFrame(moveLogo);
+            }
+
+            moveLogo();
+        }
+    </script>
+</body>
+</html>
