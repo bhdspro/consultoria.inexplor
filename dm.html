@@ -25,14 +25,18 @@
         }
 
         h1 {
-            color: white;
-            text-shadow: 1px 1px 0 #464b52, -1px -1px 0 #464b52, 1px -1px 0 #464b52, -1px 1px 0 #464b52;
-            margin-bottom: 10px;
-            margin-top: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    color: white;
+    text-shadow: 1px 1px 0 #464b52, -1px -1px 0 #464b52, 1px -1px 0 #464b52, -1px 1px 0 #464b52;
+    margin-bottom: 10px;
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center; /* Garante que o texto fique centralizado */
+    flex-wrap: wrap; /* Permite que o texto quebre corretamente em telas menores */
+    max-width: 90%; /* Evita que ultrapasse os limites da tela */
+}
+
 
         .typing {
             border-right: 2px solid #191c1f;
