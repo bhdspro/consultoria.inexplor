@@ -131,17 +131,17 @@
     <h1>🔥 Afilie-se a produtos ocultos da <span id="typing-text" class="typing"></span></h1>
     
     <div class="input-container">
-        <input type="text" id="hotmart-link" placeholder="🌐 Cole o link da página de pagamento da Hotmart que você copiou" />
+        <input type="text" id="hotmart-link" placeholder="🌐 Cole o link da página de pagamento (checkout) que você copiou" />
         <button onclick="checkLink()">
             <span style="font-size: 24px;">➔</span>
         </button>
     </div>
     
-    <div class="error-message" id="error-message">🚨 Ops! O link correto deve começar com https://pay.hotmart.com/...</div>
+    <div class="error-message" id="error-message">🚨 Ops! O link é inválido! Tente novamente ou solicite ajuda</div>
 
     <div class="button-container">
-        <a href="https://pay.inexplor.com/super-comunidade" target="_blank" class="custom-button">🤑 Quero Produto Validado</a>
-        <a href="https://ajuda.inexplor.com/xproc/preciso-ajuda" target="_blank" class="custom-button">😞 Preciso de Ajuda</a>
+        <a href="https://pay.inexplor.com/produto-oculto/vitalicio" target="_blank" class="custom-button">🤑 Acessar Catálogo Vitalício</a>
+        <a href="https://ajuda.inexplor.com/xproc/preciso-ajuda" target="_blank" class="custom-button">😞 Clique Aqui para Pedir Ajuda</a>
     </div>
 
     <img src="https://i.ibb.co/K9Gknzm/Logo-Inexplor.png" id="dvd-logo">
@@ -202,7 +202,7 @@
                 if (match) {
                     const productCode = match[1];
                     const whatsappNumber = '5543991228540';
-                    const whatsappMessage = `Consulte o produto oculto da ${pattern.name}: ${productCode}`;
+                    const whatsappMessage = `Consulte o Produto Oculto da ${pattern.name}: ${productCode}`;
                     const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(whatsappMessage)}`;
                     
                     window.open(whatsappUrl, '_blank');
