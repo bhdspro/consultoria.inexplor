@@ -37,7 +37,7 @@
 .typing {
     display: inline-block;
     vertical-align: middle;
-    margin-top: -50px; /* Ajuste fino para corrigir o desalinhamento */
+    margin-top: -100px; /* Ajuste fino para corrigir o desalinhamento */
 }
 
 
@@ -99,11 +99,16 @@
         }
 
         .error-message {
-            color: white;
-            margin-top: 10px;
-            font-weight: bold;
-            display: none;
-        }
+    color: white;
+    margin-top: 10px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;  /* Centraliza horizontalmente */
+    align-items: center;      /* Centraliza verticalmente */
+    text-align: center;       /* Garante que o texto dentro também seja centralizado */
+    display: none;            /* Inicialmente escondido */
+}
+
 
         .button-container {
     display: flex;
