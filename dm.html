@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultoria Inexplor</title>
+    
+    <link rel="icon" type="image/png" href="https://inexplor.com/cecbf4703a2aa92ab378c064f0550d14.png">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+        
+        body {
+            background-color: #f04e23;
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: white;
+            overflow: hidden;
+            position: relative;
+        }
+
+        h1 {
+            color: white;
+            text-shadow: 1px 1px 0 #464b52, -1px -1px 0 #464b52, 1px -1px 0 #464b52, -1px 1px 0 #464b52;
+            margin-bottom: 10px;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .typing {
+            border-right: 2px solid #191c1f;
+            white-space: nowrap;
+            overflow: hidden;
+            display: inline-block;
+            animation: blink-caret 0.75s step-end infinite;
+            margin: 0 5px;
+            vertical-align: middle;
+            position: relative;
+            top: 2px;
+        }
+
+        @keyframes blink-caret {
+            50% {
+                border-color: transparent;
+            }
+        }
+
+        .input-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        input {
+            border: 2px solid #191c1f;
+            border-radius: 25px;
+            padding: 10px;
+            font-size: 16px;
+            width: 70%;
+            max-width: 500px;
+            margin-right: 10px;
+        }
+
+        button {
+            background-color: white;
+            border: 2px solid #191c1f;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #32cd32;
+            color: white;
+        }
+
+        .error-message {
+            color: white;
+            margin-top: 10px;
+            font-weight: bold;
+            display: none;
+        }
+
+        .button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 40px;
+}
+
+
+        .custom-button {
+            background-color: #f04e23;
+            border: 2px solid white;
+            border-radius: 25px;
+            padding: 10px 20px;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .custom-button:hover {
+            background-color: #32cd32;
+        }
+
+        #dvd-logo {
+            position: fixed;
+            width: 100px;
+            height: auto;
+            pointer-events: none;
+            top: 10px;
+            left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔥 Afilie-se a produtos ocultos da <span id="typing-text" class="typing"></span></h1>
+    
+    <div class="input-container">
+        <input type="text" id="hotmart-link" placeholder="🌐 Cole o link da página de pagamento (checkout) que você copiou" />
+        <button onclick="checkLink()">
+            <span style="font-size: 24px;">➔</span>
+        </button>
+    </div>
+    
+    <div class="error-message" id="error-message">🚨 Eita, o link é inválido! Tente novamente ou solicite ajuda</div>
+
+    <div class="button-container">
+        <a href="https://pay.inexplor.com/produto-oculto/vitalicio" target="_blank" class="custom-button">🤑 Produtos Ocultos Vitalício</a>
+        <a href="https://ajuda.inexplor.com/xproc/preciso-ajuda" target="_blank" class="custom-button">😞 Clique para Receber Ajuda</a>
+    </div>
+
+    <img src="https://i.ibb.co/K9Gknzm/Logo-Inexplor.png" id="dvd-logo">
+    
+    <script>
+        const words = ["Hotmart", "Kirvano", "Eduzz", "Braip", "Logzz", "Digistore24"];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let currentWord = "";
+        let isDeleting = false;
+        const typingElement = document.getElementById("typing-text");
+        const dvdLogo = document.getElementById("dvd-logo");
+
+        function type() {
+            currentWord = words[wordIndex];
+            if (isDeleting) {
+                typingElement.innerText = currentWord.substring(0, charIndex--);
+                if (charIndex < 0) {
+                    isDeleting = false;
+                    wordIndex = (wordIndex + 1) % words.length;
+                }
+            } else {
+                typingElement.innerText = currentWord.substring(0, charIndex++);
+                if (charIndex > currentWord.length) {
+                    isDeleting = true;
+                }
+            }
+            setTimeout(type, isDeleting ? 150 : 300);
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            setTimeout(type, 500);
+            animateDVDLogo();
+
+            document.getElementById('hotmart-link').addEventListener('focus', () => {
+                document.getElementById('error-message').style.display = 'none';
+            });
+        });
+
+        function checkLink() {
+            const input = document.getElementById('hotmart-link').value;
+            const errorMessage = document.getElementById('error-message');
+            
+            // Define os padrões de links para Hotmart, Kirvano, Eduzz, Braip, Logzz e Digistore24
+            const patterns = [
+                { regex: /^https:\/\/pay\.hotmart\.com\/(\w+)/, name: 'Hotmart' },
+                { regex: /^https:\/\/pay\.kirvano\.com\/(\w{8}-\w{4}-\w{4}-\w{4}-\w{12})/, name: 'Kirvano' },
+                { regex: /^https:\/\/chk\.eduzz\.com\/(\w{8})/, name: 'Eduzz' },
+                { regex: /^https:\/\/sun\.eduzz\.com\/(\w{8})/, name: 'Eduzz' },
+                { regex: /^https:\/\/ev\.braip\.com\/checkout\/(\w+\/\w+)/, name: 'Braip' },
+                { regex: /^https:\/\/entrega\.logzz\.com\.br\/pay\/([\w-]+\/[\w-]+)/, name: 'Logzz' },
+                { regex: /^https:\/\/checkout-ds24\.com\/product\/(\d+)/, name: 'Digistore24' }
+            ];
+
+            let matched = false;
+            for (const pattern of patterns) {
+                const match = input.match(pattern.regex);
+                if (match) {
+                    const productCode = match[1];
+                    const whatsappNumber = '5543991228540';
+                    const whatsappMessage = `Consulte o Produto Oculto da ${pattern.name}: ${productCode}`;
+                    const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(whatsappMessage)}`;
+                    
+                    window.open(whatsappUrl, '_blank');
+                    matched = true;
+                    break;
+                }
+            }
+
+            if (!matched) {
+                errorMessage.style.display = 'block';
+            }
+        }
+
+        function animateDVDLogo() {
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
+            const logoWidth = dvdLogo.clientWidth;
+            const logoHeight = dvdLogo.clientHeight;
+            let x = 0;
+            let y = 0;
+            let dx = 1;
+            let dy = 1;
+
+            function moveLogo() {
+                x += dx;
+                y += dy;
+                dvdLogo.style.left = x + "px";
+                dvdLogo.style.top = y + "px";
+
+                if (x + logoWidth >= screenWidth || x <= 0) {
+                    dx = -dx;
+                }
+                if (y + logoHeight >= screenHeight || y <= 0) {
+                    dy = -dy;
+                }
+
+                requestAnimationFrame(moveLogo);
+            }
+
+            moveLogo();
+        }
+    </script>
+</body>
+</html>
