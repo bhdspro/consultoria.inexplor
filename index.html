@@ -1,0 +1,29 @@
+<script>
+  // Função para identificar o tipo de dispositivo com base no User-Agent
+  function getDeviceType() {
+    var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+    // Verificações avançadas para dispositivos móveis
+    if (/android/i.test(userAgent)) {
+      return 'mobile';
+    }
+    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+      return 'mobile';
+    }
+    if (/Windows Phone|webOS|BlackBerry|Opera Mini|IEMobile|Mobile/i.test(userAgent)) {
+      return 'mobile';
+    }
+
+    // Verificação para desktops ou outros dispositivos
+    return 'desktop';
+  }
+
+  // Redirecionamento baseado no tipo de dispositivo
+  var deviceType = getDeviceType();
+
+  if (deviceType === 'mobile') {
+    window.location.href = "https://consultoria.inexplor.com/dm";
+  } else if (deviceType === 'desktop') {
+    window.location.href = "https://consultoria.inexplor.com/pc";
+  }
+</script>
